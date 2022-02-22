@@ -1,10 +1,16 @@
 clean:
 	mvn clean
 
+compile:
+	mvn compile
+
+run:
+	mvn spring-boot:run
+
 build:
 	mvn package
 
-run:
+run-jar:
 	java -jar target/spring-demo-1.0.jar
 
 
