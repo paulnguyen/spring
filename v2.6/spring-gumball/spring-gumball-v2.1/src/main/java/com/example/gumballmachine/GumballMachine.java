@@ -85,7 +85,7 @@ public class GumballMachine {
 	public String toString() {
 		StringBuffer result = new StringBuffer();
 		result.append("Mighty Gumball, Inc.");
-		result.append("\nSpring Boot Standing Gumball Model #2021");
+		result.append("\nSpring Boot Standing Gumball Model #2022");
 		result.append("\n\n");
 		result.append("\nMachine is " + state + "\n");
 		return result.toString();
