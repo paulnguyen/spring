@@ -20,6 +20,7 @@
 
 ## Version 3.0
 
+* Modification of v2.0 to add Orders
 
 
 ## JPA Config Examples
