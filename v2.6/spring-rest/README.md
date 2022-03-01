@@ -15,6 +15,7 @@
 
 ## Version 2.0
 
+* Modification of v1.0 to use Spring HATEOAS
 
 
 ## Version 3.0
