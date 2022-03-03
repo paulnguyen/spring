@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;
 
@@ -207,6 +208,7 @@ public class StarbucksOrderController {
 
 	/*  Process payment for the "active" Order. */
 	@PostMapping("/order/register/{regid}/pay/{cardnum}")
+	@Transactional
 	StarbucksCard processOrder(@PathVariable String regid, @PathVariable String cardnum ) {
 		System.out.println( "Pay for Order: Reg ID = " + regid + " Using Card = " + cardnum ) ;
 		StarbucksOrder active = orders.get(regid);

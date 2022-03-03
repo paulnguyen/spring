@@ -1,8 +1,7 @@
 
-create database cmpe172 ;
+create database starbucks ;
 create user 'admin'@'%' identified by 'cmpe172'; 
-grant all on cmpe172.* to 'admin'@'%'; 
+grant all on starbucks.* to 'admin'@'%'; 
 
-use cmpe172 ;
-
+use starbucks ;
 
