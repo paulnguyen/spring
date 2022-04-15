@@ -57,6 +57,8 @@ docker-push:
 	docker login
 	docker build -t $(account)/spring-starbucks-api:latest .
 	docker push $(account)/spring-starbucks-api:latest
+	docker build -t $(account)/spring-starbucks-api:v3.1 .
+	docker push $(account)/spring-starbucks-api:v3.1
 
 # Compose
 
