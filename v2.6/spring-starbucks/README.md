@@ -21,3 +21,6 @@
 
 * Added Spring Profiles Support
 
+### Version 3.1
+
+* Updated for CMPE 172 Starbucks Project
