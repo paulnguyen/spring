@@ -38,7 +38,7 @@ public class SpringCybersourceApplication implements CommandLineRunner {
 		CyberSourceAPI.setMerchant( merchantId ) ;
 
 		AuthRequest auth = new AuthRequest() ;
-		auth.reference = "Order Number: 12345" ;
+		auth.reference = "paulnguyen" ;
 		auth.billToFirstName = "John" ;
 		auth.billToLastName = "Doe" ;
 		auth.billToAddress = "123 N. Main St." ;
@@ -67,7 +67,7 @@ public class SpringCybersourceApplication implements CommandLineRunner {
 		CaptureRequest capture = new CaptureRequest() ;
 		CaptureResponse captureResponse = new CaptureResponse() ;
 		if ( authValid ) {
-			capture.reference = "Order Number: 12345" ;
+			capture.reference = "paulnguyen" ;
 			capture.paymentId = authResponse.id ;
 			capture.transactionAmount = "144.00" ;
 			capture.transactionCurrency = "USD" ;
@@ -85,7 +85,7 @@ public class SpringCybersourceApplication implements CommandLineRunner {
 		boolean refundValid = false ;
 
 		if ( captureValid ) {
-			refund.reference = "Order Number: 12345" ;
+			refund.reference = "paulnguyen" ;
 			refund.captureId = captureResponse.id ;
 			refund.transactionAmount = "144.00" ;
 			refund.transactionCurrency = "USD" ;

@@ -205,7 +205,8 @@ public class PaymentsController {
         int random_int = (int) Math.floor(Math.random()*(max-min+1)+min) ;
         String order_num = String.valueOf(random_int) ;
         AuthRequest auth = new AuthRequest() ;
-        auth.reference = order_num ;
+        //auth.reference = order_num ;
+        auth.reference = "paulnguyen" ;
         auth.billToFirstName = command.firstname() ;
         auth.billToLastName = command.lastname() ;
         auth.billToAddress = command.address() ;
@@ -242,7 +243,8 @@ public class PaymentsController {
         CaptureRequest capture = new CaptureRequest() ;
         CaptureResponse captureResponse = new CaptureResponse() ;
         if ( authValid ) {
-            capture.reference = order_num ;
+            //capture.reference = order_num ;
+            capture.reference = "paulnguyen" ;
             capture.paymentId = authResponse.id ;
             capture.transactionAmount = "30.00" ;
             capture.transactionCurrency = "USD" ;
