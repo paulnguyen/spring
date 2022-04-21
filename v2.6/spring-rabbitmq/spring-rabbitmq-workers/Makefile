@@ -40,11 +40,11 @@ run: compile
 build:
 	mvn package
 
-send: jar
-	java -jar build/libs/spring-rabbitmq-workers-1.0.jar  --spring.profiles.active=$(env),work-queues,sender
+send: build
+	java -jar target/spring-rabbitmq-workers-1.0.jar  --spring.profiles.active=$(env),work-queues,sender
 
-receive: jar
-	java -jar build/libs/spring-rabbitmq-workers-1.0.jar --spring.profiles.active=$(env),work-queues,receiver
+receive: build
+	java -jar target/spring-rabbitmq-workers-1.0.jar --spring.profiles.active=$(env),work-queues,receiver
 
 # Docker
 

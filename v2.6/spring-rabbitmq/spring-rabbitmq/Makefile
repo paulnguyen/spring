@@ -2,13 +2,13 @@
 all: clean
 
 clean: 
-	mvm clean
+	mvn clean
 
 docker-clean:
 	docker stop rabbitmq
 	docker rm rabbitmq
 
-network-create:
+network:
 	docker network create --driver bridge springdemo
 
 network-inspect:
