@@ -5,7 +5,6 @@ import com.example.springstarbucksclient.model.Order;
 import com.example.springstarbucksclient.model.Ping;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,19 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
 /*
     RestTemplate JavaDoc:
         * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html
-        * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/HttpEntity.html
 
     Tutorial Resources:
         * https://reflectoring.io/spring-resttemplate
         * https://www.baeldung.com/rest-template
         * https://springframework.guru/enable-pretty-print-of-json-with-jackson
-        * https://attacomsian.com/blog/spring-boot-resttemplate-get-request-parameters-headers
 
  */
 
@@ -48,21 +43,17 @@ public class ConsoleController {
         System.out.println( command );
 
         RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
         String resourceUrl = "" ;
         String message = "";
 
-        // Set API Key Header
-        headers.set( "apikey", "2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ" ) ;
-
         if (action.equals("PING")) {
             message = "PING";
-            resourceUrl = "http://localhost:80/api/ping?apikey={apikey}";
+            resourceUrl = "http://localhost:8080/ping";
             // get response as string
-            ResponseEntity<String> stringResponse = restTemplate.getForEntity(resourceUrl, String.class, "2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ" );
+            ResponseEntity<String> stringResponse = restTemplate.getForEntity(resourceUrl, String.class);
             message = stringResponse.getBody();
             // get response as POJO
-            ResponseEntity<Ping> pingResponse = restTemplate.getForEntity(resourceUrl, Ping.class, "2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ");
+            ResponseEntity<Ping> pingResponse = restTemplate.getForEntity(resourceUrl, Ping.class);
             Ping pingMsg = pingResponse.getBody();
             System.out.println( pingMsg );
             // pretty print JSON
@@ -77,10 +68,10 @@ public class ConsoleController {
         }
         if (action.equals("NEW CARD")) {
             message = "";
-            resourceUrl = "http://localhost:80/api/cards";
+            resourceUrl = "http://localhost:8080/cards";
             // get response as POJO
             String emptyRequest = "" ;
-            HttpEntity<String> newCardRequest = new HttpEntity<String>(emptyRequest, headers) ;
+            HttpEntity<String> newCardRequest = new HttpEntity<String>(emptyRequest) ;
             ResponseEntity<Card> newCardResponse = restTemplate.postForEntity(resourceUrl, newCardRequest, Card.class);
             Card newCard = newCardResponse.getBody();
             System.out.println( newCard );
@@ -95,13 +86,13 @@ public class ConsoleController {
         }
         if (action.equals("NEW ORDER")) {
             message = "";
-            resourceUrl = "http://localhost:80/api/order/register/5012349";
+            resourceUrl = "http://localhost:8080/order/register/5012349";
             // get response as POJO
             Order orderRequest = new Order() ;
             orderRequest.setDrink("Caffe Latte") ;
             orderRequest.setMilk("Whole") ;
             orderRequest.setSize("Grande");
-            HttpEntity<Order> newOrderRequest = new HttpEntity<Order>(orderRequest,headers) ;
+            HttpEntity<Order> newOrderRequest = new HttpEntity<Order>(orderRequest) ;
             ResponseEntity<Order> newOrderResponse = restTemplate.postForEntity(resourceUrl, newOrderRequest, Order.class);
             Order newOrder = newOrderResponse.getBody();
             System.out.println( newOrder );
@@ -116,10 +107,10 @@ public class ConsoleController {
         }
         if (action.equals("ACTIVATE CARD")) {
             message = "";
-            resourceUrl = "http://localhost:80/api/card/activate/"+command.getCardnum()+"/"+command.getCardcode();
+            resourceUrl = "http://localhost:8080/card/activate/"+command.getCardnum()+"/"+command.getCardcode();
             // get response as POJO
             String emptyRequest = "" ;
-            HttpEntity<String> newCardRequest = new HttpEntity<String>(emptyRequest,headers) ;
+            HttpEntity<String> newCardRequest = new HttpEntity<String>(emptyRequest) ;
             ResponseEntity<Card> newCardResponse = restTemplate.postForEntity(resourceUrl, newCardRequest, Card.class);
             Card newCard = newCardResponse.getBody();
             System.out.println( newCard );
@@ -134,11 +125,11 @@ public class ConsoleController {
         }
         if (action.equals("PAY")) {
             message = "";
-            resourceUrl = "http://localhost:80/api/order/register/5012349/pay/"+command.getCardnum() ;
+            resourceUrl = "http://localhost:8080/order/register/5012349/pay/"+command.getCardnum() ;
             System.out.println(resourceUrl) ;
             // get response as POJO
             String emptyRequest = "" ;
-            HttpEntity<String> paymentRequest = new HttpEntity<String>(emptyRequest,headers) ;
+            HttpEntity<String> paymentRequest = new HttpEntity<String>(emptyRequest) ;
             ResponseEntity<Card> payForOrderResponse = restTemplate.postForEntity(resourceUrl, paymentRequest, Card.class);
             Card orderPaid = payForOrderResponse.getBody();
             System.out.println( orderPaid );
