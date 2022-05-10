@@ -101,7 +101,7 @@ public class ConsoleController {
             orderRequest.setDrink("Caffe Latte") ;
             orderRequest.setMilk("Whole") ;
             orderRequest.setSize("Grande");
-            HttpEntity<Order> newOrderRequest = new HttpEntity<Order>(orderRequest,headers) ;
+            HttpEntity<Order> newOrderRequest = new HttpEntity<Order>(orderRequest, headers) ;
             ResponseEntity<Order> newOrderResponse = restTemplate.postForEntity(resourceUrl, newOrderRequest, Order.class);
             Order newOrder = newOrderResponse.getBody();
             System.out.println( newOrder );
@@ -119,7 +119,7 @@ public class ConsoleController {
             resourceUrl = "http://localhost:80/api/card/activate/"+command.getCardnum()+"/"+command.getCardcode();
             // get response as POJO
             String emptyRequest = "" ;
-            HttpEntity<String> newCardRequest = new HttpEntity<String>(emptyRequest,headers) ;
+            HttpEntity<String> newCardRequest = new HttpEntity<String>(emptyRequest, headers) ;
             ResponseEntity<Card> newCardResponse = restTemplate.postForEntity(resourceUrl, newCardRequest, Card.class);
             Card newCard = newCardResponse.getBody();
             System.out.println( newCard );
@@ -138,7 +138,7 @@ public class ConsoleController {
             System.out.println(resourceUrl) ;
             // get response as POJO
             String emptyRequest = "" ;
-            HttpEntity<String> paymentRequest = new HttpEntity<String>(emptyRequest,headers) ;
+            HttpEntity<String> paymentRequest = new HttpEntity<String>(emptyRequest, headers) ;
             ResponseEntity<Card> payForOrderResponse = restTemplate.postForEntity(resourceUrl, paymentRequest, Card.class);
             Card orderPaid = payForOrderResponse.getBody();
             System.out.println( orderPaid );
