@@ -19,7 +19,8 @@ run-jar: build
 # MySQL DB
 
 mysql:
-	docker run -d --network gumball --name mysql -td -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cmpe172 mysql:8.0
+	docker run -d --network gumball --name mysql -td -p 3306:3306 \
+	-e MYSQL_ROOT_PASSWORD=cmpe172 --platform=linux/amd64 mysql:8.0
 
 mysql-shell:
 	docker exec -it mysql bash
@@ -28,14 +29,15 @@ mysql-shell:
 # Docker
 
 docker-build: build
-	docker build -t spring-gumball .
+	docker build --platform=linux/amd64 -t spring-gumball .
 	docker images
 
 gumball-network:
 	docker network create --driver bridge gumball
 
 docker-run: docker-build
-	docker run --network gumball -e "MYSQL_HOST=mysql" --name spring-gumball -td -p 8080:8080 spring-gumball
+	docker run --network gumball -e "MYSQL_HOST=mysql" --platform=linux/amd64 \
+	--name spring-gumball -td -p 8080:8080 spring-gumball
 
 docker-clean:
 	docker stop spring-gumball
@@ -47,7 +49,7 @@ docker-shell:
 
 docker-push:
 	docker login
-	docker build -t $(account)/spring-gumball:v3.0 -t $(account)/spring-gumball:v3.0 .
+	docker build --platform=linux/amd64 -t $(account)/spring-gumball:v3.0 -t $(account)/spring-gumball:v3.0 .
 	docker push $(account)/spring-gumball:v3.0
 
 # Compose
