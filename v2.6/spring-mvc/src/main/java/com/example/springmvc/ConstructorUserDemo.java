@@ -17,11 +17,19 @@ public class ConstructorUserDemo {
     private String userName;
     private int userAge;
 
+    /* https://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html */
+
     public static void print()
     {
         System.out.println( "\n\n***** ConstructorUserDemo Bytecode Dump *****" ) ;
         ConstructorUserDemo m = new ConstructorUserDemo() ;
         Class gmClass = m.getClass() ;
+
+        System.out.println( "\nCONSTRUCTORS:" ) ;
+        Constructor[] allConstructors = gmClass.getDeclaredConstructors();
+        for (Constructor ctor : allConstructors) {
+            System.out.format("%s%n", ctor.toGenericString());
+        }
 
         System.out.println( "\nFIELDS:" ) ;
         Field[] fields = gmClass.getDeclaredFields();
