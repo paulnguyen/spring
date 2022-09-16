@@ -14,7 +14,7 @@ public class HomeController {
         //FieldLevelGetterSetterDemo.print() ;
         //GetterSetterUserDemo.print() ;
         ConstructorUserDemo.print() ;
-        //DataUserDemo.print() ;
+        DataUserDemo.print() ;
         //NonNullUserDemo.print() ;
 
         return "Hello, World";
