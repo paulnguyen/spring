@@ -28,7 +28,7 @@ import io.pratik.apis.models.Product;
 @RestController
 public class ProductController {
 	
-	private List<Product> products = List.of(new Product("Television", "Samsung",1145.67,"S001"),
+	private final List<Product> products = List.of(new Product("Television", "Samsung",1145.67,"S001"),
 		       new Product("Washing Machine", "LG",114.67,"L001"),
 		       new Product("Laptop", "Apple",11453.67,"A001"));
 	

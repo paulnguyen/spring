@@ -25,3 +25,35 @@
 ### Version 3.1
 
 * Updated for CMPE 172 Starbucks Project
+
+
+# Spring Starbucks Client
+
+
+### Version 1.0
+
+* Initial Implementation of Starbucks REST API Client
+* Hard Coded to Localhost Port 8080
+
+
+### Version 2.0
+
+* Implementation of Starbucks REST API Client
+* Hard Coded to Localhost Port 80 with API Keys (i.e. for use with Kong)
+
+
+### Version 3.0 (Work in Progress)
+
+* Implementation of Starbucks REST API Client
+* Updated to Configure API Endpoints and API key
+* Add Spring Security Authentication
+
+
+
+
+
+
+
+
+
+

@@ -14,9 +14,9 @@ public class RestServiceException extends RuntimeException {
 	 
 	private static final long serialVersionUID = 1L;
 	
-	private String serviceName;
-	private HttpStatus statusCode;
-	private String error;
+	private final String serviceName;
+	private final HttpStatus statusCode;
+	private final String error;
 	public RestServiceException(String serviceName, HttpStatus statusCode, String error) {
 		super();
 		this.serviceName = serviceName;
