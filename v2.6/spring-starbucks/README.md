@@ -51,6 +51,8 @@
 
 * Add Spring Security Spring Boot Starter
 * Default Authentication Web Form Injected 
+	* Default User Name:  user
+	* Default User Password: (look for generated password during startup logs)
 
 
 ### Version 3.1 
