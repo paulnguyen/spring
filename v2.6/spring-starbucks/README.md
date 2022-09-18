@@ -1,4 +1,6 @@
+-------------------------------------------------------
 # Spring Starbucks API
+-------------------------------------------------------
 
 
 ### Version 1.0
@@ -28,8 +30,9 @@
 
 
 
-
+-------------------------------------------------------
 # Spring Starbucks Client
+-------------------------------------------------------
 
 
 ### Version 1.0
@@ -50,6 +53,10 @@
 * Default Authentication Web Form Injected 
 
 
+### Version 3.1 
+
+* Add Spring Security Spring Boot Starter
+* Default Authentication Web Form Injected 
 
 
 
