@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -35,10 +34,6 @@ import java.util.Map;
 @RequestMapping("/")
 public class ConsoleController {
 
-    @Value("${starbucks.client.apikey}") String API_KEY ;
-    @Value("${starbucks.client.apihost}") String API_HOST ;
-    @Value("${starbucks.client.register}") String REGISTER ;
-
     @GetMapping
     public String getAction(@ModelAttribute("command") ConsoleCommand command,
                             Model model) {
@@ -58,17 +53,16 @@ public class ConsoleController {
         String message = "";
 
         // Set API Key Header
-        headers.set( "apikey", API_KEY ) ;
+        headers.set( "apikey", "2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ" ) ;
 
         if (action.equals("PING")) {
             message = "PING";
-            resourceUrl = "http://"+API_HOST+"/ping?apikey="+API_KEY;
-            System.out.println(resourceUrl);
+            resourceUrl = "http://localhost:80/api/ping?apikey={apikey}";
             // get response as string
-            ResponseEntity<String> stringResponse = restTemplate.getForEntity(resourceUrl, String.class, API_KEY );
+            ResponseEntity<String> stringResponse = restTemplate.getForEntity(resourceUrl, String.class, "2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ" );
             message = stringResponse.getBody();
             // get response as POJO
-            ResponseEntity<Ping> pingResponse = restTemplate.getForEntity(resourceUrl, Ping.class, API_KEY);
+            ResponseEntity<Ping> pingResponse = restTemplate.getForEntity(resourceUrl, Ping.class, "2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ");
             Ping pingMsg = pingResponse.getBody();
             System.out.println( pingMsg );
             // pretty print JSON
@@ -83,7 +77,7 @@ public class ConsoleController {
         }
         if (action.equals("NEW CARD")) {
             message = "";
-            resourceUrl = "http://"+API_HOST+"/cards";
+            resourceUrl = "http://localhost:80/api/cards";
             // get response as POJO
             String emptyRequest = "" ;
             HttpEntity<String> newCardRequest = new HttpEntity<String>(emptyRequest, headers) ;
@@ -101,7 +95,7 @@ public class ConsoleController {
         }
         if (action.equals("NEW ORDER")) {
             message = "";
-            resourceUrl = "http://"+API_HOST+"/order/register/"+REGISTER;
+            resourceUrl = "http://localhost:80/api/order/register/5012349";
             // get response as POJO
             Order orderRequest = new Order() ;
             orderRequest.setDrink("Caffe Latte") ;
@@ -122,7 +116,7 @@ public class ConsoleController {
         }
         if (action.equals("ACTIVATE CARD")) {
             message = "";
-            resourceUrl = "http://"+API_HOST+"/card/activate/"+command.getCardnum()+"/"+command.getCardcode();
+            resourceUrl = "http://localhost:80/api/card/activate/"+command.getCardnum()+"/"+command.getCardcode();
             // get response as POJO
             String emptyRequest = "" ;
             HttpEntity<String> newCardRequest = new HttpEntity<String>(emptyRequest,headers) ;
@@ -140,7 +134,7 @@ public class ConsoleController {
         }
         if (action.equals("PAY")) {
             message = "";
-            resourceUrl = "http://"+API_HOST+"/order/register/5012349/pay/"+command.getCardnum() ;
+            resourceUrl = "http://localhost:80/api/order/register/5012349/pay/"+command.getCardnum() ;
             System.out.println(resourceUrl) ;
             // get response as POJO
             String emptyRequest = "" ;
