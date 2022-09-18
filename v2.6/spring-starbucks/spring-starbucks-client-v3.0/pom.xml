@@ -43,7 +43,10 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Manually Added for Spring Security -->
+        <!-- Manually Added for Spring Security 
+            Default User Name:  user
+            Default User Password: (look for generated password during startup logs)
+        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
