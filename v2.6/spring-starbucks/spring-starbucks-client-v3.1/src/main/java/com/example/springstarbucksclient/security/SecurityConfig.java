@@ -2,10 +2,31 @@ package com.example.springstarbucksclient.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-/*
+@Configuration
+public class SecurityConfig {
+
+
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll();
+    }
+
+
+    /*
 
     Autoconfiguring Spring Security
 
@@ -24,20 +45,47 @@ import org.springframework.security.crypto.password.PasswordEncoder;
         * SCryptPasswordEncoder—Applies Scrypt hashing encryption
         * StandardPasswordEncoder—Applies SHA-256 hashing encryption
 
-    No matter which password encoder you use, it’s important to understand that the
-    password in the database is never decoded. Instead, the password that the user
-    enters at login is encoded using the same algorithm, and it’s then compared with
-    the encoded password in the database. That comparison is performed in the
-    PasswordEncoder’s matches() method.
 
  */
-
-@Configuration
-public class SecurityConfig {
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+
+
+    /*
+
+    * https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/in-memory.html
+    * https://docs.spring.io/spring-boot/docs/current/reference/html/cli.html
+
+    Spring Security’s InMemoryUserDetailsManager implements UserDetailsService to provide
+    support for username/password based authentication that is stored in memory.
+    InMemoryUserDetailsManager provides management of UserDetails by implementing
+    the UserDetailsManager interface. UserDetails based authentication is used by
+    Spring Security when it is configured to accept a username/password for authentication.
+
+    In this sample we use Spring Boot CLI to encode the password of password and get the
+    encoded password of {bcrypt}$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW.
+
+    Spring Boot CLI:  spring encodepassword password
+    Alternatively:  https://bcrypt.online/
+
+
+     */
+    @Bean
+    public UserDetailsService users() {
+        UserDetails user = User.builder()
+                .username("user")
+                .password("$2y$10$HfdK56jb5Ut1fBpZq/lkFuPqiKdMOZBJ8H96.fx6dyYrEkI8dmPD6")
+                .roles("USER")
+                .build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password("$2a$10$xslxwAiJA4uXjGPb16uZtebldJtcpMO2rczIWNfGyhk91YYLSkJkC")
+                .roles("USER", "ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin);
     }
 
 }

@@ -32,7 +32,7 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/console")
 public class ConsoleController {
 
     @Value("${starbucks.client.apikey}") String API_KEY ;
