@@ -18,6 +18,9 @@ public class FieldLevelGetterSetterDemo {
         this.userAge=userAge;
     }
 
+    public void setUserId( int val ) { this.userId = val ; }
+    public int getUserId() { return this.userId ; }
+
     public static void print()
     {
         System.out.println( "\n\n***** FieldLevelGetterSetterDemo Bytecode Dump *****" ) ;
