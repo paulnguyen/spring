@@ -53,30 +53,31 @@
 * Default Authentication Web Form Injected 
 * Default User Name:  user
 * Default User Password: (look for generated password during startup logs)
-
-By doing nothing more than adding the security starter to the project build, 
-you get the following security features:
-
-* All HTTP request paths require authentication.
-* No specific roles or authorities are required.
-* Authentication is prompted with a simple login page.
-* There’s only one user; the username is user.
+	
+	By doing nothing more than adding the security starter to the project build, 
+	you get the following security features:
+	
+	* All HTTP request paths require authentication.
+	* No specific roles or authorities are required.
+	* Authentication is prompted with a simple login page.
+	* There’s only one user; the username is user.
 
 
 ### Version 3.1 
 
 * Add Spring Security Bare Bones Configuration Class
 * Added In-Memory User Config for Authentication
+* Disabled CSRF Protection for POST Processing
 
-Spring Security:
-
-* https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/storage.html
-
+	Spring Security:
+	
+	* https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/storage.html
+	
 	Storage Mechanisms
-
+	
 	Each of the supported mechanisms for reading a username and password can leverage any of 
 	the supported storage mechanisms:
-
+	
 	    * Simple Storage with In-Memory Authentication
 	    * Relational Databases with JDBC Authentication
 	    * Custom data stores with UserDetailsService
