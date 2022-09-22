@@ -65,7 +65,7 @@
 
 ### Version 3.1 
 
-* Add Spring Security Bare Bones Configuration Class
+* Added Spring Security Bare Bones Configuration Class
 * Added In-Memory User Config for Authentication
 * Disabled CSRF Protection for POST Processing
 
@@ -84,6 +84,21 @@
 	    * LDAP storage with LDAP Authentication
 
 
+### Version 3.2
+
+* Added Support for CSRF Protection
+* Added Home Controller (Redirects to Console)
+* Added Login Controller & Custom Login Page
+
+	Cross Site Request Forgery (CSRF)
+
+	* https://docs.spring.io/spring-security/reference/features/exploits/csrf.html
+	* https://docs.spring.io/spring-security/reference/servlet/exploits/csrf.html
+
+	Custom Login Form Example
+
+	* https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/form.html
+	* https://codepen.io/khadkamhn/pen/ZGvPLo
 
 
 
