@@ -21,6 +21,7 @@
 * Added Spring Security Bare Bones Configuration Class
 * Added In-Memory User Config for Authentication
 * Disabled CSRF Protection for POST Processing
+* Added Home Controller (Redirects to Console)
 
 Spring Security:
 	
@@ -40,7 +41,6 @@ the supported storage mechanisms:
 ### Version 3.2
 
 * Added Support for CSRF Protection
-* Added Home Controller (Redirects to Console)
 * Added Login Controller & Custom Login Page
 
 Cross Site Request Forgery (CSRF)

@@ -47,8 +47,8 @@ docker-shell:
 
 docker-push:
 	docker login
-	docker build --platform=linux/amd64 -t $(account)/spring-gumball:v3.0 -t $(account)/spring-gumball:v3.0 .
-	docker push $(account)/spring-gumball:v3.0
+	docker build --platform=linux/amd64 -t $(account)/spring-gumball:v3.1 -t $(account)/spring-gumball:v3.1 .
+	docker push $(account)/spring-gumball:v3.1
 
 # Compose
 
