@@ -236,12 +236,16 @@ public class GumballMachineController {
         gm.setState( input_state ) ;
 
         /* Process Post Action */
+        String thankyou = "" ;
         if ( action.equals("Insert Quarter") ) {
             gm.insertQuarter() ;
         }
         if ( action.equals("Turn Crank") ) {
             command.setMessage("") ;
             gm.turnCrank() ;
+            thankyou = "Thank You For Your Order with Instructions: " + command.getInstructions() ;
+            System.out.println( thankyou ) ;
+            command.setInstructions("") ;              
         } 
 
         /* Set Banner Message */
@@ -282,6 +286,7 @@ public class GumballMachineController {
         model.addAttribute( "hash", hash_string ) ;
         model.addAttribute( "message", message ) ;
         model.addAttribute( "server",  host_name + "/" + server_ip ) ;
+        model.addAttribute( "thankyou", thankyou ) ;
      
         if (errors.hasErrors()) {
             return "gumball";

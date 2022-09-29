@@ -40,3 +40,9 @@ span.validationError {
   font-size: 18px;
   border: none;
 }
+
+.thankyou {
+    border: 1px dash gray ;
+    text-align: center;
+}
+

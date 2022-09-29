@@ -3,6 +3,7 @@
 ### Version 3.0
 
 * Implementation of HMAC HASH version
+* Added Special Instructions (for testing reflective XSS)
 * With JPA/MySQL Database Support
 * Project Ported over to Spring Boot 2.7
 * With Spring Security Added

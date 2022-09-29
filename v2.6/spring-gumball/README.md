@@ -20,5 +20,6 @@
 ### Version 3.0
 
 * Added JPA/MySQL Database Support
+* Added Special Instructions (for testing reflective XSS)
 
 
