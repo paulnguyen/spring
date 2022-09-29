@@ -83,6 +83,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         //http.csrf().ignoringAntMatchers("/h2-console/**");
         http.headers().frameOptions().sameOrigin();
+        http.headers().defaultsDisabled() ; // do not use any default headers unless explicitly listed
+        http.headers().disable(); // disable headers security
         SecurityFilterChain ret = http
                 .formLogin(
                         form -> form

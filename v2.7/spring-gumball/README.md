@@ -42,6 +42,9 @@ the supported storage mechanisms:
 
 * Added Support for CSRF Protection
 * Added Login Controller & Custom Login Page
+* Added Order "Thank You Message" with Special Instructions
+* Note: CSRF will not work behind a Load Balancer
+  (Need to use Spring Session + Redis)
 
 Cross Site Request Forgery (CSRF)
 
@@ -52,6 +55,20 @@ Custom Login Form Example
 
 * https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/form.html
 * https://codepen.io/khadkamhn/pen/ZGvPLo
+
+
+
+### Version 3.3
+
+* TODO -- Add Spring Session to Replicate CSRF Tokens
+
+
+Scaling Out with Spring Sessions
+
+* https://spring.io/projects/spring-session
+* https://docs.spring.io/spring-session/docs/current/api
+* https://blog.jayway.com/2015/05/31/scaling-out-with-spring-session/
+
 
 
 

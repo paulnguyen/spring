@@ -12,6 +12,7 @@ class GumballCommand {
     private String state ;
     private String timestamp ;
     private String hash ;
+    private String instructions ;
     
 }
 
