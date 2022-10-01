@@ -43,7 +43,6 @@ the supported storage mechanisms:
 
 * Added Support for CSRF Protection
 * Added Login Controller & Custom Login Page
-* Added Order "Thank You Message" with Special Instructions
 * Note: CSRF will not work behind a Load Balancer
   (Need to use Spring Session + Redis)
 
