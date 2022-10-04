@@ -26,15 +26,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
-
 import com.example.gumballmachine.GumballMachine ;
+import org.springframework.beans.factory.annotation.Value;
 
 @Slf4j
 @Controller
 @RequestMapping("/gumball")
 public class GumballMachineController {
 
-	private static final String KEY = "kwRg54x2Go9iEdl49jFENRM12Mp711QI" ;
+	private @Value("${hmac.key}") String KEY ;
     private static final String MODEL_NUMBER = "SB102927" ;
     private static final String SERIAL_NUMBER = "2134998871109" ;
 
@@ -65,6 +65,9 @@ public class GumballMachineController {
     @GetMapping
     public String getAction( @ModelAttribute("command") GumballCommand command, 
                             Model model) {
+
+        // DEBUG HMAC Key Injected from ENV
+        System.out.println( "HMAC KEY: " + KEY ) ;
 
         /* 
             Working with Spring Data Repositories:
