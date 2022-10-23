@@ -91,6 +91,7 @@ public class WebSecurityConfig {
                                 .loginPage("/login")
                                 .permitAll()
                 )
+                .logout((logout) -> logout.permitAll())
                 .authorizeRequests()
                 .antMatchers("/gumball").hasRole("USER")
                 .antMatchers("/h2-console/**").permitAll()
