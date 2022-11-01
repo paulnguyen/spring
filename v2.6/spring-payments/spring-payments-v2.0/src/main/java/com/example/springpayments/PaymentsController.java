@@ -39,12 +39,13 @@ import org.springframework.beans.factory.annotation.Value;
 @RequestMapping("/")
 public class PaymentsController {  
 
-    private static boolean DEBUG = true ;    
+    private static boolean DEBUG = true ;
 
-    @Value("${cybersource.apihost}") String apiHost ;
-    @Value("${cybersource.merchantkeyid}") String merchantKeyId ;
-    @Value("${cybersource.merchantsecretkey}") String merchantsecretKey ;
-    @Value("${cybersource.merchantid}") String merchantId ;     
+    @Value("${cybersource.apihost}") private String apiHost ;
+    @Value("${cybersource.merchantkeyid}") private String merchantKeyId ;
+    @Value("${cybersource.merchantsecretkey}") private String merchantsecretKey ;
+    @Value("${cybersource.merchantid}") private String merchantId ;
+
 
     private CyberSourceAPI api = new CyberSourceAPI() ;
 
