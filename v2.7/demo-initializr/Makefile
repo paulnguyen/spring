@@ -10,3 +10,5 @@ run:
 build:
 	mvn package
 
+run-jar:
+	java -jar target/$(jar)
