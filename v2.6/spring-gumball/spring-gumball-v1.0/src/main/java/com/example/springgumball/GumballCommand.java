@@ -9,6 +9,11 @@ class GumballCommand {
 
     private String action ;
     private String message ;
+
+/*
+    public String getMessage() { return this.message ; }
+    public void setMessage(String arg) { this.message = arg ; }
+*/
     
 }
 
